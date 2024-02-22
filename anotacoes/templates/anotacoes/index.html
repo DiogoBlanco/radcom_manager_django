@@ -1,0 +1,27 @@
+{% extends 'global/base.html' %} {% block content %}
+{% block title %}Diogo Blanco | Anotações{% endblock title %} 
+<h1 class="text-center text-light mt-5 mb-5">Anotações</h1>
+<div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
+  <a href="#"><button type="button" class="btn btn-primary">Adicionar Anotação</button></a>
+</div>
+<table class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Título</th>
+      <th scope="col">Data</th>
+      <th scope="col">Lembrete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for annotation in annotations %}
+    <tr>
+      <th scope="row">{{annotation.id}}</th>
+      <td>{{annotation.title}}</td>
+      <td>{{annotation.date}}</td>
+      <td>{{annotation.reminder}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'global/base.html' %}
+{% block title %}Diogo Blanco | Clientes{% endblock title %} 
+{% block content %}
+<h1 class="text-center text-light mt-5 mb-5">Clientes</h1>
+<div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
+  <a href="#"><button type="button" class="btn btn-primary">Adicionar Cliente</button></a>
+</div>
+<table class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Endereço</th>
+      <th scope="col">Contato</th>
+      <th scope="col">Equipamentos</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for customer in customers %}
+    <tr>
+      <td scope="row">{{customer.id}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.address}}</td>
+      <td>{{customer.contact}}</td>
+      <td>{{customer.equipment}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

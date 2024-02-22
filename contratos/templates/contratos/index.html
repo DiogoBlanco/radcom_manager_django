@@ -1,0 +1,28 @@
+{% extends 'global/base.html' %} 
+{% block content %}
+{% block title %}Diogo Blanco | Contratos{% endblock title %} 
+<h1 class="text-center text-light mt-5 mb-5">Contratos</h1>
+<div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
+  <a href="#"><button type="button" class="btn btn-primary">Adicionar Contrato</button></a>
+</div>
+<table class="table table-striped table-bordered text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Tipo de Contrato</th>
+      <th scope="col">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contract in contracts %}
+    <tr>
+      <th scope="row">{{contract.id}}</th>
+      <td>{{contract.customer}}</td>
+      <td>{{contract.contract_type}}</td>
+      <td><b>{{contract.value}}</b></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
