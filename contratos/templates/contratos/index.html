@@ -1,4 +1,5 @@
 {% extends 'global/base.html' %} 
+{% load static %}
 {% block content %}
 {% block title %}Diogo Blanco | Contratos{% endblock title %} 
 <h1 class="text-center text-light mt-5 mb-5">Contratos</h1>
@@ -12,6 +13,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Tipo de Contrato</th>
       <th scope="col">Valor</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +23,7 @@
       <td>{{contract.customer}}</td>
       <td>{{contract.contract_type}}</td>
       <td><b>{{contract.value}}</b></td>
+      <td><a class="edit" href="#"><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit"></a><a class="delete"><img class="p-2" src="{% static 'img/trash3.svg' %}" alt="delete"></a></td>
     </tr>
     {% endfor %}
   </tbody>
