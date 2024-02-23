@@ -1,4 +1,5 @@
-{% extends 'global/base.html' %} {% block content %}
+{% extends 'global/base.html' %} 
+{% block content %}
 {% block title %}Diogo Blanco | Anotações{% endblock title %} 
 <h1 class="text-center text-light mt-5 mb-5">Anotações</h1>
 <div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
@@ -11,6 +12,7 @@
       <th scope="col">Título</th>
       <th scope="col">Data</th>
       <th scope="col">Lembrete</th>
+      <th scope="col">Imagem</th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +22,7 @@
       <td>{{annotation.title}}</td>
       <td>{{annotation.date}}</td>
       <td>{{annotation.reminder}}</td>
+      <td><img src="{{annotation.image.url}}" alt="image" width="120"></td>
     </tr>
     {% endfor %}
   </tbody>
