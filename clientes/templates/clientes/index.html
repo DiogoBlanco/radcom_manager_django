@@ -3,7 +3,7 @@
 {% block content %}
 <h1 class="text-center text-light mt-5 mb-5">Clientes</h1>
 <div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
-  <a href="#"><button type="button" class="btn btn-primary">Adicionar Cliente</button></a>
+  <a href="{% url 'clientes:add_cliente' %}"><button type="button" class="btn btn-primary">Adicionar Cliente</button></a>
 </div>
 <table class="table table-striped table-bordered text-center">
   <thead>

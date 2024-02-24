@@ -4,10 +4,10 @@ from django.db import models
 
 
 class Customer(models.Model):
-    name = models.CharField(max_length=99)
-    address = models.CharField(max_length=99)
-    contact = models.CharField(max_length=99)
-    equipment = models.TextField(null=True)
+    name = models.CharField(max_length=99, verbose_name='Nome')
+    address = models.CharField(max_length=99, verbose_name='Endereço')
+    contact = models.CharField(max_length=99, verbose_name='Contato')
+    equipment = models.TextField(null=True, verbose_name='Equipamento')
 
     def __str__(self):
         return self.name
@@ -33,6 +33,9 @@ class Contract(models.Model):
 
     def __str__(self):
         return f'{self.customer}'
+
+    def name(self):
+        return self.customer.name
 
     def set_contract_value(self):
         if self.contract_type == 'Internet':
