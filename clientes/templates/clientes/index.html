@@ -1,4 +1,5 @@
 {% extends 'global/base.html' %}
+{% load static %}
 {% block title %}Diogo Blanco | Clientes{% endblock title %} 
 {% block content %}
 <h1 class="text-center text-light mt-5 mb-5">Clientes</h1>
@@ -13,6 +14,7 @@
       <th scope="col">Endereço</th>
       <th scope="col">Contato</th>
       <th scope="col">Equipamentos</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +25,7 @@
       <td>{{customer.address}}</td>
       <td>{{customer.contact}}</td>
       <td>{{customer.equipment}}</td>
+      <td><a class="edit" href="{% url 'clientes:edit_cliente' customer_id=customer.id %}"><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit"></a><a class="delete"><img class="p-2" src="{% static 'img/trash3.svg' %}" alt="delete"></a></td>
     </tr>
     {% endfor %}
   </tbody>
