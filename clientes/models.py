@@ -22,10 +22,12 @@ class Contract(models.Model):
                              ('Interfone', 'Interfone'),
                              ('Internet/Interfone', 'Internet/Interfone'))
 
-    customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.DO_NOTHING, verbose_name='Cliente')
     contract_type = models.CharField(
-        choices=contract_type_choices, max_length=18)
-    value = models.DecimalField(decimal_places=2, max_digits=6, default=0.00)
+        choices=contract_type_choices, max_length=18, verbose_name='Tipo de Contrato')
+    value = models.DecimalField(
+        decimal_places=2, max_digits=6, default=0.00, verbose_name='Valor')
 
     class Meta:
         verbose_name = 'Contrato'
