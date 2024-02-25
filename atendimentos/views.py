@@ -34,3 +34,11 @@ def edit_service(request, service_id):
     else:
         form = ServiceForm(instance=service)
     return render(request, 'atendimentos/edit_atendimento.html', {'form': form})
+
+
+def delete_service(request, service_id):
+    service = get_object_or_404(Service, id=service_id)
+    if request.method == 'POST':
+        service.delete()
+        return redirect('/atendimentos')
+    return redirect('/atendimentos')
