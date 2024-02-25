@@ -13,6 +13,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Problema</th>
       <th scope="col">Solução</th>
+      <th scope="col">Data</th>
       <th scope="col">Valor</th>
       <th scope="col">Ações</th>
     </tr>
@@ -24,6 +25,7 @@
       <td>{{service.customer}}</td>
       <td>{{service.problem}}</td>
       <td>{{service.solution}}</td>
+      <td>{{service.date}}</td>
       <td><b>{{service.value}}</b></td>
       <td><a class="edit" href="{% url 'atendimentos:edit_atendimento' service_id=service.id %}"><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit"></a><a class="delete"><img class="p-2" src="{% static 'img/trash3.svg' %}" alt="delete"></a></td>
     </tr>
