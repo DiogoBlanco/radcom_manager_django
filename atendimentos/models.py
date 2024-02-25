@@ -5,11 +5,13 @@ from clientes.models import Customer
 
 
 class Service(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
-    date = models.DateField(max_length=10)
-    problem = models.TextField()
-    solution = models.TextField()
-    value = models.DecimalField(max_digits=5, decimal_places=2)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.DO_NOTHING, verbose_name='Cliente')
+    date = models.DateField(max_length=10, verbose_name='Data')
+    problem = models.TextField(verbose_name='Problema')
+    solution = models.TextField(verbose_name='Solução')
+    value = models.DecimalField(
+        max_digits=5, decimal_places=2, verbose_name='Valor')
 
     def __str__(self):
         return self.customer.name

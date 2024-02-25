@@ -1,9 +1,10 @@
 {% extends 'global/base.html' %}
+{% load static %}
 {% block title %}Diogo Blanco | Atendimentos{% endblock title %}
 {% block content %} 
 <h1 class="text-center text-light mt-5 mb-5">Atendimentos</h1>
 <div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
-  <a href="#"><button type="button" class="btn btn-primary">Adicionar Atendimento</button></a>
+  <a href="{% url 'atendimentos:add_atendimento' %}"><button type="button" class="btn btn-primary">Adicionar Atendimento</button></a>
 </div>
 <table class="table table-striped table-bordered text-center">
   <thead>
@@ -13,6 +14,7 @@
       <th scope="col">Problema</th>
       <th scope="col">Solução</th>
       <th scope="col">Valor</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +25,7 @@
       <td>{{service.problem}}</td>
       <td>{{service.solution}}</td>
       <td><b>{{service.value}}</b></td>
+      <td><a class="edit" href="{% url 'atendimentos:edit_atendimento' service_id=service.id %}"><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit"></a><a class="delete"><img class="p-2" src="{% static 'img/trash3.svg' %}" alt="delete"></a></td>
     </tr>
     {% endfor %}
   </tbody>
