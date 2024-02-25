@@ -15,7 +15,7 @@ def annotations(request):
 
 def add_annotation(request):
     if request.method == 'POST':
-        form = AnnotationForm(request.POST)
+        form = AnnotationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/anotacoes')
@@ -27,7 +27,7 @@ def add_annotation(request):
 def edit_annotation(request, annotation_id):
     annotation = get_object_or_404(Annotation, id=annotation_id)
     if request.method == 'POST':
-        form = AnnotationForm(request.POST, instance=annotation)
+        form = AnnotationForm(request.POST, request.FILES, instance=annotation)
         if form.is_valid():
             form.save()
             return redirect('/anotacoes')
