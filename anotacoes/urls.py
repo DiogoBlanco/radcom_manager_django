@@ -3,5 +3,8 @@ from . import views
 app_name = 'anotacoes'
 
 urlpatterns = [
-    path('', views.annotations, name='anotacoes')
+    path('', views.annotations, name='anotacoes'),
+    path('adicionar/', views.add_annotation, name='add_anotacao'),
+    path('<int:annotation_id>/editar',
+         views.edit_annotation, name='edit_anotacao')
 ]

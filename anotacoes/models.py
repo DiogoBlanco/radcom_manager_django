@@ -2,10 +2,10 @@ from django.db import models
 
 
 class Annotation(models.Model):
-    title = models.CharField(max_length=99)
-    date = models.DateField()
-    reminder = models.TextField()
-    image = models.ImageField()
+    title = models.CharField(max_length=99, verbose_name='Título')
+    date = models.DateField(verbose_name='Data')
+    reminder = models.TextField(verbose_name='Lembrete')
+    image = models.ImageField(verbose_name='Imagem')
 
     def __str__(self):
         return self.title

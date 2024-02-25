@@ -1,9 +1,10 @@
-{% extends 'global/base.html' %} 
+{% extends 'global/base.html' %}
+{% load static %} 
 {% block title %}Diogo Blanco | Anotações{% endblock title %}
 {% block content %}
 <h1 class="text-center text-light mt-5 mb-5">Anotações</h1>
 <div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
-  <a href="#"><button type="button" class="btn btn-primary">Adicionar Anotação</button></a>
+  <a href="{% url 'anotacoes:add_anotacao' %}"><button type="button" class="btn btn-primary">Adicionar Anotação</button></a>
 </div>
 <table class="table table-striped table-bordered text-center">
   <thead>
@@ -13,6 +14,7 @@
       <th scope="col">Data</th>
       <th scope="col">Lembrete</th>
       <th scope="col">Imagem</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +25,7 @@
       <td>{{annotation.date}}</td>
       <td>{{annotation.reminder}}</td>
       <td><img src="{{annotation.image.url}}" alt="image" width="120"></td>
+      <td><a class="edit" href="{% url 'anotacoes:edit_anotacao' annotation_id=annotation.id %}"><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit"></a><a class="delete"><img class="p-2" src="{% static 'img/trash3.svg' %}" alt="delete"></a></td>
     </tr>
     {% endfor %}
   </tbody>
