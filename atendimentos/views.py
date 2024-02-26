@@ -6,7 +6,7 @@ from .forms import ServiceForm
 
 
 def services(request):
-    services = Service.objects.all()
+    services = Service.objects.all().order_by('date')
     context = {
         'services': services,
     }

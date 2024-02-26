@@ -25,7 +25,33 @@
       <td>{{customer.address}}</td>
       <td>{{customer.contact}}</td>
       <td>{{customer.equipment}}</td>
-      <td><a class="edit" href="{% url 'clientes:edit_cliente' customer_id=customer.id %}"><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit"></a><a class="delete"><img class="p-2" src="{% static 'img/trash3.svg' %}" alt="delete"></a></td>
+      <td>        
+        <a
+        class="edit"
+        href="{% url 'clientes:edit_cliente' customer_id=customer.id %}"
+        ><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit" />
+      </a>
+      <form
+        action="{% url 'clientes:apagar_cliente' customer_id=customer.id  %}"
+        method="post"
+        id="delete-form"
+      >
+        {% csrf_token %}
+        <a href="#" class="delete"
+          ><button
+            class="btn btn-outline-light"
+            type="submit"
+            onclick="return confirm('Tem certeza que deseja apagar este cliente?');"
+          >
+            <img
+              class="p-2"
+              src="{% static 'img/trash3.svg' %}"
+              alt="delete"
+            />
+          </button>
+        </a>
+      </form>
+</td>
     </tr>
     {% endfor %}
   </tbody>

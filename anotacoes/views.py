@@ -6,7 +6,7 @@ from .forms import AnnotationForm
 
 
 def annotations(request):
-    annotations = Annotation.objects.all()
+    annotations = Annotation.objects.all().order_by('date')
     context = {
         'annotations': annotations
     }

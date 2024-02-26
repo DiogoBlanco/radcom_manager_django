@@ -32,3 +32,11 @@ def edit_contract(request, contract_id):
     else:
         form = ContractForm(instance=contract)
     return render(request, 'contratos/edit_contrato.html', {'form': form})
+
+
+def delete_contract(request, contract_id):
+    contract = get_object_or_404(Contract, id=contract_id)
+    if request.method == 'POST':
+        contract.delete()
+        return redirect('/contratos')
+    return redirect('/contratos')
