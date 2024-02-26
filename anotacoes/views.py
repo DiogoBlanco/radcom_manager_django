@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .models import Annotation
 from .forms import AnnotationForm
-
-# Create your views here.
 
 
 def annotations(request):
@@ -18,10 +17,12 @@ def add_annotation(request):
         form = AnnotationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Anotação criada com sucesso!')
             return redirect('/anotacoes')
     else:
         form = AnnotationForm()
-    return render(request, 'anotacoes/add_anotacao.html', {'form': form})
+    return render(request, 'anotacoes/add_anotacao.html',
+                  {'form': form})
 
 
 def edit_annotation(request, annotation_id):
