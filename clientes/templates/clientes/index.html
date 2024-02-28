@@ -21,7 +21,7 @@
     {% for customer in customers %}
     <tr>
       <td scope="row">{{customer.id}}</td>
-      <td>{{customer.name}}</td>
+      <td><a href="{% url 'clientes:detalhes' customer_id=customer.id %}">{{customer.name}}</a></td>
       <td>{{customer.address}}</td>
       <td>{{customer.contact}}</td>
       <td>{{customer.equipment}}</td>

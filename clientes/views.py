@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Customer, File
+from .models import Customer
 from .forms import CustomerForm, FileForm
 
 # Create your views here.
@@ -34,6 +34,11 @@ def edit_customer(request, customer_id):
     else:
         form = CustomerForm(instance=customer)
     return render(request, 'clientes/edit_cliente.html', {'form': form})
+
+
+def customer_detail(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    return render(request, 'clientes/detalhes_cliente.html', {'customer': customer})
 
 
 def delete_customer(request, customer_id):
