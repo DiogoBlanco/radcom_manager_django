@@ -30,6 +30,7 @@
       <td>{{annotation.reminder}}</td>
       <td><img src="{{annotation.image.url}}" alt="image" width="160" height="80" /></td>
       <td>
+        <div class="d-flex justify-content-center align-items-center align-content-center">
         <a
           class="edit"
           href="{% url 'anotacoes:edit_anotacao' annotation_id=annotation.id %}"
@@ -56,6 +57,7 @@
           </a>
         </form>
       </td>
+    </div>
     </tr>
     {% endfor %}
   </tbody>

@@ -5,7 +5,7 @@
   <body class="container">
     <main>
       {% include 'partials/_nav.html' %}
-      <p class="text-light mt-3">Olá {{user.first_name}}!</p>
+      <p class="text-light mt-3">Olá <b>{{user.first_name}}</b>!</p>
       {% block content %} 
       {% endblock content %}
       {% include 'partials/_scripts.html' %}

@@ -20,10 +20,11 @@
     {% for contract in contracts %}
     <tr>
       <th scope="row">{{contract.id}}</th>
-      <td>{{contract.customer}}</td>
+      <td><b>{{contract.customer}}</b></td>
       <td>{{contract.contract_type}}</td>
       <td><b>{{contract.value}}</b></td>
       <td>
+        <div class="d-flex justify-content-center align-items-center align-content-center">
         <a
         class="edit"
         href="{% url 'contratos:edit_contrato' contract_id=contract.id %}"
@@ -51,6 +52,7 @@
       </form>
 
       </td>
+    </div>
     </tr>
     {% endfor %}
   </tbody>
