@@ -27,6 +27,11 @@
       <td>{{customer.equipment}}</td>
       <td>        
         <a
+        class="upload"
+        href="{% url 'clientes:enviar_arquivo' customer_id=customer.id %}"
+        ><img class="p-2" src="{% static 'img/file-earmark.svg' %}" alt="upload" />
+      </a>
+        <a
         class="edit"
         href="{% url 'clientes:edit_cliente' customer_id=customer.id %}"
         ><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit" />
