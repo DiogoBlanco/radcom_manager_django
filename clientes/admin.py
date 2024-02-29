@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer, Contract, File
+from .models import Customer, Contract
 # Register your models here.
 
 
@@ -9,7 +9,3 @@ class CustomerAdmin(admin.ModelAdmin):
 
 class ContractAdmin(admin.ModelAdmin):
     admin.site.register(Contract)
-
-
-class FileAdmin(admin.ModelAdmin):
-    admin.site.register(File)

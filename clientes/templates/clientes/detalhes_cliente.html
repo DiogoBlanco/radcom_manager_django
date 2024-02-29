@@ -3,9 +3,8 @@
 {% block content %}
   <h1 class="text-center text-light mt-5 mb-5">{{customer.name}}</h1>
   <ul class="list-group">
-    <li class="list-group-item">{{customer.address}}</li>
-    <li class="list-group-item">{{customer.contact}}</li>
-    <li class="list-group-item">{{customer.equipment}}</li>
-    <li class="list-group-item">{{customer.files}}</li>
+    <li class="list-group-item"><b>Endereço:</b> {{customer.address}}</li>
+    <li class="list-group-item"><b>Contato:</b> {{customer.contact}}</li>
+    <li class="list-group-item"><b>Equipamentos:</b> {{customer.equipment}}</li>
   </ul>
   {% endblock content %}

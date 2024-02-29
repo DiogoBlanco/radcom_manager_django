@@ -5,7 +5,7 @@ class Annotation(models.Model):
     title = models.CharField(max_length=99, verbose_name='Título')
     date = models.DateField(verbose_name='Data')
     reminder = models.TextField(verbose_name='Lembrete')
-    image = models.ImageField(verbose_name='Imagem')
+    image = models.ImageField(verbose_name='Imagem', blank=True)
 
     def __str__(self):
         return self.title

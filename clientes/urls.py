@@ -10,6 +10,4 @@ urlpatterns = [
     path('<int:customer_id>/detalhes', views.customer_detail, name='detalhes'),
     path('<int:customer_id>/apagar',
          views.delete_customer, name='apagar_cliente'),
-    path('<int:customer_id>/enviar_arquivo',
-         views.file_upload, name='enviar_arquivo'),
 ]

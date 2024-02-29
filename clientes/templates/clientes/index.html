@@ -26,14 +26,6 @@
       <td>        
         <div class="d-flex justify-content-center align-content-center align-items-center gap-1">
           <a
-          class="upload"
-          href="{% url 'clientes:enviar_arquivo' customer_id=customer.id %}"
-          ><button
-          class="btn btn-outline-light"
-          type="submit"
-        ><img class="p-2" src="{% static 'img/file-earmark.svg' %}" alt="upload" />
-        </a>
-          <a
           class="edit"
           href="{% url 'clientes:edit_cliente' customer_id=customer.id %}"
           ><button

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 
     'anotacoes',
     'atendimentos',
+    'arquivos',
     'clientes',
     'contratos',
 ]

@@ -18,6 +18,7 @@
       <th scope="col">Problema</th>
       <th scope="col">Solução</th>
       <th scope="col">Data</th>
+      <th scope="col">Fotos</th>
       <th scope="col">Valor</th>
       <th scope="col">Ações</th>
     </tr>
@@ -30,6 +31,13 @@
       <td>{{service.problem}}</td>
       <td>{{service.solution}}</td>
       <td>{{service.date}}</td>
+      <td>
+        {% if service.image %}
+          <img src="{{service.image.url}}" alt="image" width="160" height="80" />
+        {% else %}
+          <p>Sem imagens do atendimento</p>
+        {% endif %}
+      </td>
       <td><b>{{service.value}}</b></td>
       <td>
         <div class="d-flex justify-content-center align-items-center align-content-center gap-1">

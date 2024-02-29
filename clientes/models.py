@@ -3,27 +3,12 @@ from django.db import models
 # Create your models here.
 
 
-class File(models.Model):
-    file = models.FileField(
-        upload_to='files/', blank=True, verbose_name='Arquivo')
-    description = models.CharField(
-        max_length=255, blank=True, verbose_name='Descrição')
-
-    def __str__(self):
-        return self.description
-
-    class Meta:
-        verbose_name = 'Arquivo'
-        verbose_name_plural = 'Arquivos'
-
-
 class Customer(models.Model):
     name = models.CharField(max_length=99, verbose_name='Nome')
     address = models.CharField(max_length=99, verbose_name='Endereço')
     contact = models.CharField(max_length=99, verbose_name='Contato')
     equipment = models.TextField(
         blank=True, null=True, verbose_name='Equipamento')
-    files = models.ManyToManyField(File, blank=True, verbose_name='Arquivos')
 
     def __str__(self):
         return self.name

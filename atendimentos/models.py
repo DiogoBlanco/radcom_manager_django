@@ -12,6 +12,8 @@ class Service(models.Model):
     solution = models.TextField(verbose_name='Solução')
     value = models.DecimalField(
         max_digits=5, decimal_places=2, verbose_name='Valor')
+    image = models.ImageField(verbose_name='Imagem',
+                              blank=True, upload_to='media')
 
     def __str__(self):
         return self.customer.name

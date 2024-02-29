@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Customer, File
-from .forms import CustomerForm, FileForm
+from .models import Customer
+from .forms import CustomerForm
 
 # Create your views here.
 
@@ -47,16 +47,3 @@ def delete_customer(request, customer_id):
         customer.delete()
         return redirect('/clientes')
     return redirect('/clientes')
-
-
-def file_upload(request, customer_id):
-    if request.method == 'POST':
-        form = FileForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = form.save()
-            customer = Customer.objects.get(pk=customer_id)
-            customer.files.add(file)
-            return redirect('/clientes')
-    else:
-        form = FileForm()
-    return render(request, 'clientes/enviar_arquivo.html', {'form': form})
