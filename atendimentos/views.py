@@ -15,7 +15,7 @@ def services(request):
 
 def add_service(request):
     if request.method == 'POST':
-        form = ServiceForm(request.POST)
+        form = ServiceForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/atendimentos')
@@ -27,7 +27,7 @@ def add_service(request):
 def edit_service(request, service_id):
     service = get_object_or_404(Service, id=service_id)
     if request.method == 'POST':
-        form = ServiceForm(request.POST, instance=service)
+        form = ServiceForm(request.POST, request.FILES, instance=service)
         if form.is_valid():
             form.save()
             return redirect('/atendimentos')

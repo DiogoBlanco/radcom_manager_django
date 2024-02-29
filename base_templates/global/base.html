@@ -2,10 +2,10 @@
 <html lang="pt-br">
   {% include 'partials/_head.html' %}
   <title>{% block title %}Base{% endblock title %}</title>
-  <body class="container">
+  <body class="container bg-body-secondary">
     <main>
       {% include 'partials/_nav.html' %}
-      <p class="text-light mt-3">Olá <b>{{user.first_name}}</b>!</p>
+      <p class="text-secondary mt-3">Olá <b>{{user.first_name}}</b>!</p>
       {% block content %} 
       {% endblock content %}
       {% include 'partials/_scripts.html' %}

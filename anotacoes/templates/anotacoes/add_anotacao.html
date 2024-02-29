@@ -2,15 +2,8 @@
 {% load crispy_forms_tags %}
 {% block title %}Diogo Blanco | Adicionar Anotação{% endblock title %} 
 {% block content %}
-  <h1 class="text-center text-light mt-5 mb-5">Adicionar Anotação</h1>
-  {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-success" role="alert">
-      {{ message }}
-    </div>
-    {% endfor %}
-  {% endif %}
- <form class="text-light mb-5" method="post" enctype="multipart/form-data">
+  <h1 class="text-center text-secondary mt-5 mb-5">Adicionar Anotação</h1>
+ <form class="text-secondary mb-5" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{form|crispy}}
       <button class="btn btn-primary" type="submit">Adicionar Anotação</button>
