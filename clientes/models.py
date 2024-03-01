@@ -7,8 +7,13 @@ class Customer(models.Model):
     name = models.CharField(max_length=99, verbose_name='Nome')
     address = models.CharField(max_length=99, verbose_name='Endereço')
     contact = models.CharField(max_length=99, verbose_name='Contato')
+    email = models.EmailField(blank=True)
     equipment = models.TextField(
-        blank=True, null=True, verbose_name='Equipamento')
+        blank=True, verbose_name='Equipamento')
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='Data de Criação')
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name='Última Atualização')
 
     def __str__(self):
         return self.name
@@ -29,6 +34,10 @@ class Contract(models.Model):
         choices=contract_type_choices, max_length=18, verbose_name='Tipo de Contrato')
     value = models.DecimalField(
         decimal_places=2, max_digits=6, default=0.00, verbose_name='Valor')
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='Data de Criação')
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name='Última Atualização')
 
     class Meta:
         verbose_name = 'Contrato'

@@ -26,9 +26,13 @@
     <tr>
       <th scope="row">{{annotation.id}}</th>
       <td>{{annotation.title}}</td>
-      <td>{{annotation.date}}</td>
+      <td>{{annotation.created_at}}</td>
       <td>{{annotation.reminder}}</td>
+      {% if annotation.image %}
       <td><img src="{{annotation.image.url}}" alt="image" width="160" height="80" /></td>
+      {% else %}
+      <td></td>
+      {% endif %}
       <td>
         <div class="d-flex justify-content-center align-items-center align-content-center gap-1">
         <a

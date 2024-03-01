@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib import messages
 from .models import Annotation
 from .forms import AnnotationForm
 
 
 def annotations(request):
-    annotations = Annotation.objects.all().order_by('date')
+    annotations = Annotation.objects.all().order_by('created_at')
     context = {
         'annotations': annotations
     }
@@ -17,7 +16,6 @@ def add_annotation(request):
         form = AnnotationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Anotação criada com sucesso!')
             return redirect('/anotacoes')
     else:
         form = AnnotationForm()

@@ -13,6 +13,10 @@ class Service(models.Model):
     value = models.DecimalField(
         max_digits=10, decimal_places=2, verbose_name='Valor')
     image = models.ImageField(verbose_name='Imagem', blank=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='Data de Criação')
+    updated_at = models.DateTimeField(
+        auto_now=True, verbose_name='Última Atualização')
 
     def __str__(self):
         return self.customer.name
