@@ -9,7 +9,6 @@
 <table class="table table-striped table-bordered text-center">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Endereço</th>
       <th scope="col">Contato</th>
@@ -19,7 +18,6 @@
   <tbody>
     {% for customer in customers %}
     <tr>
-      <td scope="row">{{customer.id}}</td>
       <td><b><a href="{% url 'clientes:detalhes' customer_id=customer.id %}">{{customer.name}}</a></b></td>
       <td>{{customer.address}}</td>
       <td>{{customer.contact}}</td>

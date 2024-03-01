@@ -31,13 +31,11 @@
       <td>{{service.problem}}</td>
       <td>{{service.solution}}</td>
       <td>{{service.date}}</td>
-      <td>
-        {% if service.image %}
-          <img src="{{service.image.url}}" alt="image" width="160" height="80" />
-        {% else %}
-          <p>Sem imagens do atendimento</p>
-        {% endif %}
-      </td>
+      {% if service.image %}
+      <td><img src="{{service.image.url}}" alt="image" width="160" height="80" /></td>
+      {% else %}
+      <td></td>
+      {% endif %}
       <td><b>{{service.value}}</b></td>
       <td>
         <div class="d-flex justify-content-center align-items-center align-content-center gap-1">
