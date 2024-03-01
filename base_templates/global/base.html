@@ -3,8 +3,8 @@
   {% include 'partials/_head.html' %}
   <title>{% block title %}Base{% endblock title %}</title>
   <body class="container" style="background: #00284b;">
+    {% include 'partials/_nav.html' %}
     <main class="bg-body-secondary p-3">
-      {% include 'partials/_nav.html' %}
       <p class="text-secondary mt-3">Olá <b>{{user.first_name}}</b>!</p>
       {% block content %} 
       {% endblock content %}
