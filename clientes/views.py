@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Customer
 from .forms import CustomerForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 
 def customers(request):
-    customers = Customer.objects.all().order_by('name')
+    search_query = request.GET.get('search', '')
+    customers = Customer.objects.filter(
+        Q(name__icontains=search_query)).order_by('name')
     paginator = Paginator(customers, 10)
     page = request.GET.get('page')
     try:
@@ -16,6 +19,7 @@ def customers(request):
         customers_list = paginator.page(paginator.num_pages)
     context = {
         'customers_list': customers_list,
+        'search_query': search_query
     }
     return render(request, 'clientes/index.html', context)
 

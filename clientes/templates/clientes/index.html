@@ -2,6 +2,16 @@
 {% load static %} 
 {% block title %}Diogo Blanco | Clientes{% endblock title %} 
 {% block content %}
+<div class="mx-auto" style="width: 18rem;">
+  <form class="form-inline" method="get">
+    <div class="input-group">
+      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="Buscar cliente">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary btn-sm ms-2 mt-1">Buscar</button>
+      </div>
+    </div>
+  </form>
+</div>
 <h1 class="text-center text-dark mt-5 mb-5">Clientes</h1>
 <div class="btn-group mb-3 mt-3" role="group">
   <a href="{% url 'clientes:add_cliente' %}" class="btn btn-primary btn-sm"
