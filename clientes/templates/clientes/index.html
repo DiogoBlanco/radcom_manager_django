@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for customer in customers %}
+      {% for customer in customers_list %}
       <tr>
         <td>
           <a href="{% url 'clientes:detalhes' customer.id %}"
@@ -63,5 +63,22 @@
       {% endfor %}
     </tbody>
   </table>
+</div>
+<div class="pagination">
+  <span class="step-links">
+      {% if customers_list.has_previous %}
+          <a href="?page=1">&laquo; primeira</a>
+          <a href="?page={{ customers_list.previous_page_number }}">anterior</a>
+      {% endif %}
+
+      <span class="current">
+          Página {{ customers_list.number }} de {{ customers_list.paginator.num_pages }}.
+      </span>
+
+      {% if customers_list.has_next %}
+          <a href="?page={{ customers_list.next_page_number }}">próxima</a>
+          <a href="?page={{ customers_list.paginator.num_pages }}">última &raquo;</a>
+      {% endif %}
+  </span>
 </div>
 {% endblock content %}

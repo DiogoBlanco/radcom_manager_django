@@ -1,14 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Customer
 from .forms import CustomerForm
-
-# Create your views here.
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def customers(request):
-    customers = Customer.objects.all().order_by('name').values()
+    customers = Customer.objects.all().order_by('name')
+    paginator = Paginator(customers, 10)
+    page = request.GET.get('page')
+    try:
+        customers_list = paginator.page(page)
+    except PageNotAnInteger:
+        customers_list = paginator.page(1)
+    except EmptyPage:
+        customers_list = paginator.page(paginator.num_pages)
     context = {
-        'customers': customers,
+        'customers_list': customers_list,
     }
     return render(request, 'clientes/index.html', context)
 
