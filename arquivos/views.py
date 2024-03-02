@@ -13,7 +13,7 @@ def add_file(request):
         form = FilesForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/arquivos')
+            return redirect('/app/arquivos')
     else:
         form = FilesForm()
     return render(request, 'arquivos/add_arquivos.html',
@@ -26,7 +26,7 @@ def edit_file(request, file_id):
         form = FilesForm(request.POST, request.FILES, instance=file)
         if form.is_valid():
             form.save()
-            return redirect('/arquivos')
+            return redirect('/app/arquivos')
     else:
         form = FilesForm(instance=file)
     return render(request, 'arquivos/edit_arquivos.html', {'form': form, 'file': file})
@@ -36,5 +36,5 @@ def delete_file(request, file_id):
     file = get_object_or_404(Files, id=file_id)
     if request.method == 'POST':
         file.delete()
-        return redirect('/arquivos')
-    return redirect('/arquivos')
+        return redirect('/app/arquivos')
+    return redirect('/app/arquivos')

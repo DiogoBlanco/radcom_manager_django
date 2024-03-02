@@ -18,7 +18,7 @@ def add_service(request):
         form = ServiceForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/atendimentos')
+            return redirect('/app/atendimentos')
     else:
         form = ServiceForm()
     return render(request, 'atendimentos/add_atendimento.html', {'form': form})
@@ -30,7 +30,7 @@ def edit_service(request, service_id):
         form = ServiceForm(request.POST, request.FILES, instance=service)
         if form.is_valid():
             form.save()
-            return redirect('/atendimentos')
+            return redirect('/app/atendimentos')
     else:
         form = ServiceForm(instance=service)
     return render(request, 'atendimentos/edit_atendimento.html', {'form': form})
@@ -40,5 +40,5 @@ def delete_service(request, service_id):
     service = get_object_or_404(Service, id=service_id)
     if request.method == 'POST':
         service.delete()
-        return redirect('/atendimentos')
-    return redirect('/atendimentos')
+        return redirect('/app/atendimentos')
+    return redirect('/app/atendimentos')
