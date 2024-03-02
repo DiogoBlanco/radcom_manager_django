@@ -2,10 +2,10 @@
 {% load static %} 
 {% block title %}Diogo Blanco | Arquivos{% endblock title %} 
 {% block content %}
-<h1 class="text-center text-secondary mt-5 mb-5">Arquivos</h1>
-<div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
-  <a href="{% url 'arquivos:add_arquivos' %}"
-    ><button type="button" class="btn btn-primary">
+<h1 class="text-center text-dark mt-5 mb-5">Arquivos</h1>
+<div class="btn-group mb-3 mt-3" role="group">
+  <a href="{% url 'arquivos:add_arquivo' %}"
+    ><button type="button" class="btn btn-primary btn-sm">
       Adicionar Arquivo
     </button></a
   >
@@ -13,6 +13,7 @@
 <table class="table table-responsive table-striped table-bordered text-center">
   <thead>
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Cliente</th>
       <th scope="col">Descrição</th>
       <th scope="col">Backup PABX</th>
@@ -23,6 +24,7 @@
   <tbody>
     {% for file in files %}
     <tr>
+      <td>{{file.id}}</td>
       <td>{{file.customer}}</td>
       <td>{{file.title}}</td>
       {% if file.backup_pabx %}
@@ -31,15 +33,15 @@
       <td></td>
       {% endif %}
       {% if file.backup_rb %}
-      <td>{{file.backup_rb}}</td>
+      <td><a href="{{file.backup_rb.url}}">{{file.backup_rb}}</a></td>
       {% else %}
       <td></td>
       {% endif %}
       <td>
-        <div class="d-flex justify-content-center align-items-center align-content-center gap-1">
+        <div class="btn-group-vertical" role="group">
         <a
           class="edit"
-          href="#"
+          href="{% url 'arquivos:edit_arquivo' file_id=file.id %}"
           ><button
           class="btn btn-outline-light"
           type="submit"

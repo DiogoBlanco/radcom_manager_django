@@ -2,10 +2,11 @@
 {% load static %}
 {% block title %}Diogo Blanco | Contratos{% endblock title %}
 {% block content %}
-<h1 class="text-center text-secondary mt-5 mb-5">Contratos</h1>
-<div class="btn-group mb-3 mt-3" role="group" aria-label="Basic example">
-  <a href="{% url 'contratos:add_contrato' %}"><button type="button" class="btn btn-primary">Adicionar Contrato</button></a>
+<h1 class="text-center text-dark mt-5 mb-5">Contratos</h1>
+<div class="btn-group mb-3 mt-3" role="group">
+  <a href="{% url 'contratos:add_contrato' %}"><button type="button" class="btn btn-primary btn-sm">Adicionar Contrato</button></a>
 </div>
+{% if user.is_authenticated %}
 <table class="table table-responsive table-striped table-bordered text-center">
   <thead>
     <tr>
@@ -22,14 +23,14 @@
       <td>{{contract.contract_type}}</td>
       <td><b>{{contract.value}}</b></td>
       <td>
-        <div class="d-flex justify-content-center align-items-center align-content-center gap-1">
+        <div class="btn-group-vertical" role="group">
         <a
         class="edit"
         href="{% url 'contratos:edit_contrato' contract_id=contract.id %}"
         ><button
         class="btn btn-outline-light"
         type="submit"
-      ><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit" />
+      ><img class="p-2 img-fluid" src="{% static 'img/pen.svg' %}" alt="edit" />
       </a>
       <form
         action="{% url 'contratos:apagar_contrato' contract_id=contract.id  %}"
@@ -44,21 +45,21 @@
             onclick="return confirm('Tem certeza que deseja apagar este contrato?');"
           >
             <img
-              class="p-2"
+              class="p-2 img-fluid"
               src="{% static 'img/trash3.svg' %}"
               alt="delete"
             />
           </button>
         </a>
       </form>
-
-      </td>
-    </div>
+    </td>
+  </div>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 <div class="bg-info text-center p-2">
-  <h3 class="text-light">Total de Contratos: R$ {{total_value}}</h3>
+  <h3 class="text-light fs-6">Total de Contratos: R$ {{total_value}}</h3>
 </div>
+{% endif %}
 {% endblock content %}

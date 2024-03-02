@@ -18,7 +18,7 @@ def add_contract(request):
         form = ContractForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/contratos')
     else:
         form = ContractForm()
     return render(request, 'contratos/add_contrato.html', {'form': form})
@@ -30,7 +30,7 @@ def edit_contract(request, contract_id):
         form = ContractForm(request.POST, instance=contract)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/contratos')
     else:
         form = ContractForm(instance=contract)
     return render(request, 'contratos/edit_contrato.html', {'form': form})
@@ -40,5 +40,5 @@ def delete_contract(request, contract_id):
     contract = get_object_or_404(Contract, id=contract_id)
     if request.method == 'POST':
         contract.delete()
-        return redirect('/')
-    return redirect('/')
+        return redirect('/contratos')
+    return redirect('/contratos')

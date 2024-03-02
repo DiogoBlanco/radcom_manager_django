@@ -1,8 +1,8 @@
 {% extends 'global/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Diogo Blanco | Editar Anotação{% endblock title %} 
+{% block title %}Diogo Blanco | Editar Arquivos{% endblock title %} 
 {% block content %}
-  <h1 class="text-center text-dark mt-5 mb-5">Editar Anotação</h1>
+  <h1 class="text-center text-dark mt-5 mb-5">Editar Arquivos</h1>
     <form class="text-dark mb-5" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{form|crispy}}

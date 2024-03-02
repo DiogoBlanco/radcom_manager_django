@@ -4,7 +4,7 @@ from . import views
 app_name = 'arquivos'
 
 urlpatterns = [
-    path('', views.index, name='arquivos'),
-    path('adicionar/', views.add_files, name='add_arquivos'),
-
+    path('', views.file, name='arquivos'),
+    path('adicionar/', views.add_file, name='add_arquivo'),
+    path('<int:file_id>/editar', views.edit_file, name='edit_arquivo'),
 ]
