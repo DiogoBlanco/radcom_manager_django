@@ -24,10 +24,10 @@ class Customer(models.Model):
 
 
 class Contract(models.Model):
+    name = models.CharField(max_length=99, verbose_name='Nome', default='')
     contract_type_choices = (('Internet', 'Internet'),
                              ('Interfone', 'Interfone'),
                              ('Internet/Interfone', 'Internet/Interfone'))
-
     customer = models.ForeignKey(
         Customer, on_delete=models.DO_NOTHING, verbose_name='Cliente')
     contract_type = models.CharField(
@@ -44,10 +44,7 @@ class Contract(models.Model):
         verbose_name_plural = 'Contratos'
 
     def __str__(self):
-        return f'{self.customer}'
-
-    def name(self):
-        return self.customer.name
+        return f'{self.name}'
 
     def set_contract_value(self):
         if self.contract_type == 'Internet':

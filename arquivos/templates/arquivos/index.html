@@ -13,7 +13,6 @@
 <table class="table table-responsive table-striped table-bordered text-center">
   <thead>
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Cliente</th>
       <th scope="col">Descrição</th>
       <th scope="col">Backup PABX</th>
@@ -24,7 +23,6 @@
   <tbody>
     {% for file in files %}
     <tr>
-      <td>{{file.id}}</td>
       <td>{{file.customer}}</td>
       <td>{{file.title}}</td>
       {% if file.backup_pabx %}
@@ -48,7 +46,7 @@
         ><img class="p-2" src="{% static 'img/pen.svg' %}" alt="edit"
         /></a>
         <form
-          action="#"
+          action="{% url 'arquivos:apagar_arquivo' file_id=file.id %}"
           method="post"
           id="delete-form"
         >
@@ -57,7 +55,7 @@
             ><button
             class="btn btn-outline-light"  
             type="submit"
-              onclick="return confirm('Tem certeza que deseja apagar estes arquivos?');"
+            onclick="return confirm('Tem certeza que deseja apagar este arquivo?');"
             >
               <img
                 class="p-2"
