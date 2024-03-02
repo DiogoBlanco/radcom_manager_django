@@ -17,7 +17,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for contract in contracts %}
+    {% for contract in contracts_list %}
     <tr>
       <td><b>{{contract.customer}}</b></td>
       <td>{{contract.contract_type}}</td>
@@ -58,7 +58,24 @@
     {% endfor %}
   </tbody>
 </table>
-<div class="bg-info text-center p-2">
+<div class="pagination">
+  <span class="step-links">
+      {% if contracts_list.has_previous %}
+          <a href="?page=1">&laquo; primeira</a>
+          <a href="?page={{ contracts_list.previous_page_number }}">anterior</a>
+      {% endif %}
+
+      <span class="current">
+          Página {{ contracts_list.number }} de {{ contracts_list.paginator.num_pages }}.
+      </span>
+
+      {% if contracts_list.has_next %}
+          <a href="?page={{ contracts_list.next_page_number }}">próxima</a>
+          <a href="?page={{ contracts_list.paginator.num_pages }}">última &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+<div class="bg-info text-center p-2 mt-3">
   <h3 class="text-light fs-6">Total de Contratos: R$ {{total_value}}</h3>
 </div>
 {% endif %}
