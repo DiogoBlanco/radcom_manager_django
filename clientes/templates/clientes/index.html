@@ -15,16 +15,16 @@
 <h1 class="text-center text-dark mt-5 mb-5">Clientes</h1>
 <div class="btn-group mb-3 mt-3" role="group">
   <a href="{% url 'clientes:add_cliente' %}" class="btn btn-primary btn-sm"
-    >Adicionar Cliente</a
+    >Adicionar Cliente <img src="{% static 'img/person-add.svg' %}" alt="add_cliente"></a
   >
 </div>
 <div class="table-responsive">
-  <table class="table table-striped table-bordered text-center">
+  <table class="table table-striped table-bordered text-center align-middle">
     <thead>
       <tr>
-        <th scope="col">Nome</th>
-        <th scope="col">Contato</th>
-        <th scope="col">Ações</th>
+        <th scope="col"><img src="{% static 'img/file-person.svg' %}" alt="nome"> Nome</th>
+        <th scope="col"><img src="{% static 'img/telephone.svg' %}" alt="nome"> Contato</th>
+        <th scope="col"><img src="{% static 'img/tools.svg' %}" alt="nome"> Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -32,7 +32,7 @@
       <tr>
         <td>
           <a href="{% url 'clientes:detalhes' customer.id %}"
-            ><b>{{customer.name}}</b></a
+            ><b><img class="me-2" src="{% static 'img/info-circle-fill.svg' %}" alt="link"> {{customer.name}}</b></a
           >
         </td>
         <td>{{customer.contact}}</td>
