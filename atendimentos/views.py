@@ -54,3 +54,8 @@ def delete_service(request, service_id):
         service.delete()
         return redirect('/app/atendimentos')
     return redirect('/app/atendimentos')
+
+
+def service_detail(request, service_id):
+    service = get_object_or_404(Service, id=service_id)
+    return render(request, 'atendimentos/detalhes_atendimento.html', {'service': service})

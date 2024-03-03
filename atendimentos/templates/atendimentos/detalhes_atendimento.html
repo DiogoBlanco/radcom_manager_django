@@ -1,0 +1,15 @@
+{% extends 'global/base.html' %}
+{% block title %}Diogo Blanco | {{service.name}}{% endblock title %} 
+{% block content %}
+  <h1 class="text-center text-dark mt-5 mb-5">{{service.name}}</h1>
+  <ul class="list-group">
+    <li class="list-group-item"><b>Cliente:</b> {{service.customer}}</li>
+    <li class="list-group-item"><b>Data:</b> {{service.date}}</li>
+    <li class="list-group-item"><b>Problema:</b> {{service.problem}}</li>
+    <li class="list-group-item"><b>Solução:</b> {{service.solution}}</li>
+    <li class="list-group-item"><b>Valor:</b> {{service.value}}</li>
+    <li class="list-group-item"><b>Foto:</b><br>
+        <img class="img-fluid mt-3" src="{{service.image.url}}" alt="foto" width="240">
+    </li>
+  </ul>
+  {% endblock content %}

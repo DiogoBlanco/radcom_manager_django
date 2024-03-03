@@ -54,3 +54,8 @@ def delete_file(request, file_id):
         file.delete()
         return redirect('/app/arquivos')
     return redirect('/app/arquivos')
+
+
+def file_detail(request, file_id):
+    file = get_object_or_404(Files, id=file_id)
+    return render(request, 'arquivos/detalhes_arquivos.html', {'file': file})

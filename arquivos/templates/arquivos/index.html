@@ -5,7 +5,7 @@
 <div class="mx-auto" style="width: 18rem;">
   <form class="form-inline" method="get">
     <div class="input-group">
-      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="Buscar anotação">
+      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="Buscar arquivos">
       <div class="input-group-append">
         <button type="submit" class="btn btn-primary btn-sm ms-2 mt-1">Buscar</button>
       </div>
@@ -25,26 +25,14 @@
     <tr>
       <th scope="col">Cliente</th>
       <th scope="col">Descrição</th>
-      <th scope="col">Backup PABX</th>
-      <th scope="col">Backup RB</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
     {% for file in files_list %}
     <tr>
-      <td><b>{{file.customer}}</b></td>
+      <td><a href="{% url 'arquivos:detalhes' file.id %}"><b>{{file.customer}}</b></a></td>
       <td>{{file.title}}</td>
-      {% if file.backup_pabx %}
-      <td><a href="{{file.backup_pabx.url}}">{{file.backup_pabx}}</a></td>
-      {% else %}
-      <td></td>
-      {% endif %}
-      {% if file.backup_rb %}
-      <td><a href="{{file.backup_rb.url}}">{{file.backup_rb}}</a></td>
-      {% else %}
-      <td></td>
-      {% endif %}
       <td>
         <div class="btn-group-vertical" role="group">
         <a

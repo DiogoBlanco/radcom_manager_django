@@ -5,7 +5,7 @@
 <div class="mx-auto" style="width: 18rem;">
   <form class="form-inline" method="get">
     <div class="input-group">
-      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="Buscar cliente">
+      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="Buscar atendimento">
       <div class="input-group-append">
         <button type="submit" class="btn btn-primary btn-sm ms-2 mt-1">Buscar</button>
       </div>
@@ -26,7 +26,6 @@
       <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Data</th>
-      <th scope="col">Fotos</th>
       <th scope="col">Valor</th>
       <th scope="col">Ações</th>
     </tr>
@@ -35,13 +34,8 @@
     {% for service in services_list %}
     <tr>
       <th scope="row">{{service.id}}</th>
-      <td><b>{{service.name}}</b></td>
+      <td><a href="{% url 'atendimentos:detalhes' service.id %}"><b>{{service.name}}</b></a></td>
       <td>{{service.date}}</td>
-      {% if service.image %}
-      <td><img class="img-fluid" src="{{service.image.url}}" alt="image" width="160" height="80" /></td>
-      {% else %}
-      <td></td>
-      {% endif %}
       <td><b>{{service.value}}</b></td>
       <td>
         <div class="btn-group-vertical" role="group">
