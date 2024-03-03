@@ -25,8 +25,6 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nome</th>
-      <th scope="col">Problema</th>
-      <th scope="col">Solução</th>
       <th scope="col">Data</th>
       <th scope="col">Fotos</th>
       <th scope="col">Valor</th>
@@ -38,8 +36,6 @@
     <tr>
       <th scope="row">{{service.id}}</th>
       <td><b>{{service.name}}</b></td>
-      <td>{{service.problem}}</td>
-      <td>{{service.solution}}</td>
       <td>{{service.date}}</td>
       {% if service.image %}
       <td><img class="img-fluid" src="{{service.image.url}}" alt="image" width="160" height="80" /></td>

@@ -2,6 +2,16 @@
 {% load static %} 
 {% block title %}Diogo Blanco | Arquivos{% endblock title %} 
 {% block content %}
+<div class="mx-auto" style="width: 18rem;">
+  <form class="form-inline" method="get">
+    <div class="input-group">
+      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="Buscar anotação">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary btn-sm ms-2 mt-1">Buscar</button>
+      </div>
+    </div>
+  </form>
+</div>
 <h1 class="text-center text-dark mt-5 mb-5">Arquivos</h1>
 <div class="btn-group mb-3 mt-3" role="group">
   <a href="{% url 'arquivos:add_arquivo' %}"
@@ -21,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for file in files %}
+    {% for file in files_list %}
     <tr>
       <td><b>{{file.customer}}</b></td>
       <td>{{file.title}}</td>
@@ -71,4 +81,21 @@
     {% endfor %}
   </tbody>
 </table>
+<div class="pagination">
+  <span class="step-links">
+      {% if files_list.has_previous %}
+          <a href="?page=1">&laquo; primeira</a>
+          <a href="?page={{ files_list.previous_page_number }}">anterior</a>
+      {% endif %}
+
+      <span class="current">
+          Página {{ files_list.number }} de {{ files_list.paginator.num_pages }}.
+      </span>
+
+      {% if files_list.has_next %}
+          <a href="?page={{ files_list.next_page_number }}">próxima</a>
+          <a href="?page={{ files_list.paginator.num_pages }}">última &raquo;</a>
+      {% endif %}
+  </span>
+</div>
 {% endblock content %}

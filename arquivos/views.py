@@ -1,11 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Files
 from .forms import FilesForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 
 def file(request):
-    files = Files.objects.all().order_by('customer')
-    return render(request, 'arquivos/index.html', {'files': files})
+    search_query = request.GET.get('search', '')
+    files = Files.objects.filter(
+        Q(title__icontains=search_query)).order_by('customer')
+    paginator = Paginator(files, 10)
+    page = request.GET.get('page')
+    try:
+        files_list = paginator.page(page)
+    except PageNotAnInteger:
+        files_list = paginator.page(1)
+    except EmptyPage:
+        files_list = paginator.page(paginator.num_pages)
+    context = {
+        'files_list': files_list,
+        'search_query': search_query
+    }
+    return render(request, 'arquivos/index.html', context)
 
 
 def add_file(request):

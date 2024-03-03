@@ -1,12 +1,25 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Annotation
 from .forms import AnnotationForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 
 def annotations(request):
-    annotations = Annotation.objects.all().order_by('created_at')
+    search_query = request.GET.get('search', '')
+    annotations = Annotation.objects.filter(
+        Q(title__icontains=search_query)).order_by('title')
+    paginator = Paginator(annotations, 10)
+    page = request.GET.get('page')
+    try:
+        annotations_list = paginator.page(page)
+    except PageNotAnInteger:
+        annotations_list = paginator.page(1)
+    except EmptyPage:
+        annotations_list = paginator.page(paginator.num_pages)
     context = {
-        'annotations': annotations
+        'annotations_list': annotations_list,
+        'search_query': search_query
     }
     return render(request, 'anotacoes/index.html', context)
 
