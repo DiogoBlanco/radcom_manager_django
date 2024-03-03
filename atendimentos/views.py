@@ -1,14 +1,26 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Service
 from .forms import ServiceForm
-
-# Create your views here.
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 
 def services(request):
-    services = Service.objects.all().order_by('date')
+    search_query = request.GET.get('search', '')
+    services = Service.objects.filter(
+        Q(name__icontains=search_query)).order_by('name')
+    paginator = Paginator(services, 10)
+    page = request.GET.get('page')
+    try:
+        services_list = paginator.page(page)
+    except PageNotAnInteger:
+        services_list = paginator.page(1)
+    except EmptyPage:
+        services_list = paginator.page(paginator.num_pages)
+
     context = {
-        'services': services,
+        'services_list': services_list,
+        'search_query': search_query
     }
     return render(request, 'atendimentos/index.html', context)
 

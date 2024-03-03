@@ -2,6 +2,16 @@
 {% load static %} 
 {% block title %}Diogo Blanco | Atendimentos{% endblock title %} 
 {% block content %}
+<div class="mx-auto" style="width: 18rem;">
+  <form class="form-inline" method="get">
+    <div class="input-group">
+      <input type="text" class="form-control" name="search" value="{{ search_query }}" placeholder="Buscar cliente">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary btn-sm ms-2 mt-1">Buscar</button>
+      </div>
+    </div>
+  </form>
+</div>
 <h1 class="text-center text-dark mt-5 mb-5">Atendimentos</h1>
 <div class="btn-group mb-3 mt-3" role="group">
   <a href="{% url 'atendimentos:add_atendimento' %}"
@@ -24,10 +34,10 @@
     </tr>
   </thead>
   <tbody>
-    {% for service in services %}
+    {% for service in services_list %}
     <tr>
       <th scope="row">{{service.id}}</th>
-      <td><b>{{service.customer}}</b></td>
+      <td><b>{{service.name}}</b></td>
       <td>{{service.problem}}</td>
       <td>{{service.solution}}</td>
       <td>{{service.date}}</td>
@@ -73,4 +83,21 @@
     {% endfor %}
   </tbody>
 </table>
+<div class="pagination">
+  <span class="step-links">
+      {% if services_list.has_previous %}
+          <a href="?page=1">&laquo; primeira</a>
+          <a href="?page={{ services_list.previous_page_number }}">anterior</a>
+      {% endif %}
+
+      <span class="current">
+          Página {{ services_list.number }} de {{ services_list.paginator.num_pages }}.
+      </span>
+
+      {% if services_list.has_next %}
+          <a href="?page={{ services_list.next_page_number }}">próxima</a>
+          <a href="?page={{ services_list.paginator.num_pages }}">última &raquo;</a>
+      {% endif %}
+  </span>
+</div>
 {% endblock content %}

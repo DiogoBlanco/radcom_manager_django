@@ -5,7 +5,7 @@ from .models import Service
 class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
-        fields = fields = ['customer', 'date',
+        fields = fields = ['name', 'customer', 'date',
                            'problem', 'solution', 'value', 'image']
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'})

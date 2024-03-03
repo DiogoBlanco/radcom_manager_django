@@ -23,7 +23,7 @@
   <tbody>
     {% for file in files %}
     <tr>
-      <td>{{file.customer}}</td>
+      <td><b>{{file.customer}}</b></td>
       <td>{{file.title}}</td>
       {% if file.backup_pabx %}
       <td><a href="{{file.backup_pabx.url}}">{{file.backup_pabx}}</a></td>

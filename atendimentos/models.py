@@ -5,6 +5,7 @@ from clientes.models import Customer
 
 
 class Service(models.Model):
+    name = models.CharField(max_length=99, verbose_name='Nome', default='')
     customer = models.ForeignKey(
         Customer, on_delete=models.DO_NOTHING, verbose_name='Cliente')
     date = models.DateField(max_length=10, verbose_name='Data')
@@ -19,7 +20,7 @@ class Service(models.Model):
         auto_now=True, verbose_name='Última Atualização')
 
     def __str__(self):
-        return self.customer.name
+        return self.name
 
     class Meta:
         verbose_name = 'Atendimento'
