@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure--*9b^q8g6-on77^)x=xtl7!3cj*lu3tyo3mtw-$sn$9l8ic^k@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.85']
 
 
 # Application definition
@@ -140,3 +140,5 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGIN_URL = '/app/auth/login'
 
 LOGIN_REDIRECT_URL = '/app'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
