@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Service
 from .forms import ServiceForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
 
+@login_required
 def services(request):
     search_query = request.GET.get('search', '')
     services = Service.objects.filter(
@@ -25,6 +27,7 @@ def services(request):
     return render(request, 'atendimentos/index.html', context)
 
 
+@login_required
 def add_service(request):
     if request.method == 'POST':
         form = ServiceForm(request.POST, request.FILES)
@@ -36,6 +39,7 @@ def add_service(request):
     return render(request, 'atendimentos/add_atendimento.html', {'form': form})
 
 
+@login_required
 def edit_service(request, service_id):
     service = get_object_or_404(Service, id=service_id)
     if request.method == 'POST':
@@ -48,6 +52,7 @@ def edit_service(request, service_id):
     return render(request, 'atendimentos/edit_atendimento.html', {'form': form})
 
 
+@login_required
 def delete_service(request, service_id):
     service = get_object_or_404(Service, id=service_id)
     if request.method == 'POST':
@@ -56,6 +61,7 @@ def delete_service(request, service_id):
     return redirect('/app/atendimentos')
 
 
+@login_required
 def service_detail(request, service_id):
     service = get_object_or_404(Service, id=service_id)
     return render(request, 'atendimentos/detalhes_atendimento.html', {'service': service})

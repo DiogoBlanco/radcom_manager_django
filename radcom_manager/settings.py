@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'arquivos',
     'clientes',
     'contratos',
+    'authentication',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,7 @@ MEDIA_URL = 'media/'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+LOGIN_URL = '/app/auth/login'
+
+LOGIN_REDIRECT_URL = '/app'

@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Files
 from .forms import FilesForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
 
+@login_required
 def file(request):
     search_query = request.GET.get('search', '')
     files = Files.objects.filter(
@@ -24,6 +26,7 @@ def file(request):
     return render(request, 'arquivos/index.html', context)
 
 
+@login_required
 def add_file(request):
     if request.method == 'POST':
         form = FilesForm(request.POST, request.FILES)
@@ -36,6 +39,7 @@ def add_file(request):
                   {'form': form})
 
 
+@login_required
 def edit_file(request, file_id):
     file = get_object_or_404(Files, id=file_id)
     if request.method == 'POST':
@@ -48,6 +52,7 @@ def edit_file(request, file_id):
     return render(request, 'arquivos/edit_arquivos.html', {'form': form, 'file': file})
 
 
+@login_required
 def delete_file(request, file_id):
     file = get_object_or_404(Files, id=file_id)
     if request.method == 'POST':
@@ -56,6 +61,7 @@ def delete_file(request, file_id):
     return redirect('/app/arquivos')
 
 
+@login_required
 def file_detail(request, file_id):
     file = get_object_or_404(Files, id=file_id)
     return render(request, 'arquivos/detalhes_arquivos.html', {'file': file})

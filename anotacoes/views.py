@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Annotation
 from .forms import AnnotationForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
 
+@login_required
 def annotations(request):
     search_query = request.GET.get('search', '')
     annotations = Annotation.objects.filter(
@@ -24,6 +26,7 @@ def annotations(request):
     return render(request, 'anotacoes/index.html', context)
 
 
+@login_required
 def add_annotation(request):
     if request.method == 'POST':
         form = AnnotationForm(request.POST, request.FILES)
@@ -36,6 +39,7 @@ def add_annotation(request):
                   {'form': form})
 
 
+@login_required
 def edit_annotation(request, annotation_id):
     annotation = get_object_or_404(Annotation, id=annotation_id)
     if request.method == 'POST':
@@ -48,6 +52,7 @@ def edit_annotation(request, annotation_id):
     return render(request, 'anotacoes/edit_anotacao.html', {'form': form})
 
 
+@login_required
 def delete_annotation(request, annotation_id):
     annotation = get_object_or_404(Annotation, id=annotation_id)
     if request.method == 'POST':

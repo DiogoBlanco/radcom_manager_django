@@ -16,7 +16,6 @@
 <div class="btn-group mb-3 mt-3" role="group">
   <a href="{% url 'contratos:add_contrato' %}"><button type="button" class="btn btn-primary btn-sm">Adicionar Contrato</button></a>
 </div>
-{% if user.is_authenticated %}
 <table class="table table-responsive table-striped table-bordered text-center align-middle">
   <thead>
     <tr>
@@ -83,6 +82,7 @@
       {% endif %}
   </span>
 </div>
+{% if user.is_superuser %}
 <div class="p-2 mt-3 mb-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
   <h3 class="text-center">Total de Contratos: R$ {{total_value}}</h3>
 </div>

@@ -10,22 +10,22 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'clientes:clientes' %}">Clientes <img src="{% static 'img/file-person.svg' %}" alt="clientes"></a>
+        <a class="nav-link" href="{% url 'clientes:clientes' %}">Clientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ms-1" href="{% url 'contratos:contratos' %}">Contratos <img src="{% static 'img/file-earmark-text.svg' %}" alt="contratos"></a>
+        <a class="nav-link" href="{% url 'contratos:contratos' %}">Contratos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ms-1" href="{% url 'atendimentos:atendimentos' %}">Atendimentos <img src="{% static 'img/wrench-adjustable.svg' %}" alt="atendimentos"></a>
+        <a class="nav-link" href="{% url 'atendimentos:atendimentos' %}">Atendimentos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ms-1" href="{% url 'anotacoes:anotacoes' %}">Anotações <img src="{% static 'img/book.svg' %}" alt="anotações"></a>
+        <a class="nav-link" href="{% url 'anotacoes:anotacoes' %}">Anotações</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ms-1" href="{% url 'arquivos:arquivos' %}">Arquivos <img src="{% static 'img/file-earmark.svg' %}" alt="arquivos"></a>
+        <a class="nav-link" href="{% url 'arquivos:arquivos' %}">Arquivos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link ms-1" href="#">Logout <img src="{% static 'img/box-arrow-right.svg' %}" alt="logout"></a>
+        <a class="nav-link" href="{% url 'authentication:logout' %}">Logout <img class="ms-1" src="{% static 'img/box-arrow-right.svg' %}" alt="logout"></a>
       </li>
     </ul>
   </div>

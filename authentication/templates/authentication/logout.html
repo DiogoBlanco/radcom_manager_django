@@ -10,37 +10,19 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>Diogo Blanco | Login</title>
+    <title>Diogo Blanco | Logout</title>
   </head>
   <body>
     <main class="container">
       <div
         class="container d-flex flex-column justify-content-center align-items-center"
       >
-        <img
-          class="mt-5"
-          src="{% static 'img/logo_radcom.png' %}"
-          alt="logo_radcom"
-          width="120"
-        />
-        <h1 class="mb-4 mt-4">Login</h1>
+        <h1 class="mb-4 mt-4">Logout</h1>
       </div>
-      <form
-        class="p-5 shadow-sm rounded bg-body-tertiary"
-        action=""
-        method="post"
-      >
-        {% csrf_token %}
-        <div class="mb-3">
-          <label for="user" class="form-label">Usuário</label>
-          <input type="text" class="form-control" id="user" />
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="password" />
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-      </form>
+      <div class="p-5 shadow-sm rounded bg-body-tertiary">
+        <p>Você está prestes a sair da sua conta. Tem certeza?</p>
+        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+      </div>
       <footer class="p-5">
         <p class="text-center">
           Desenvolvido por Diogo Blanco - 2024 - CodeCraft&copy;

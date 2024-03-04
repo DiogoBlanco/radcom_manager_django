@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from clientes.models import Contract
 from .forms import ContractForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -6,6 +7,7 @@ from django.db.models import Q
 from django.db.models import Sum
 
 
+@login_required
 def contratos(request):
     search_query = request.GET.get('search', '')
 
@@ -35,6 +37,7 @@ def contratos(request):
     return render(request, 'contratos/index.html', context)
 
 
+@login_required
 def add_contract(request):
     if request.method == 'POST':
         form = ContractForm(request.POST)
@@ -46,6 +49,7 @@ def add_contract(request):
     return render(request, 'contratos/add_contrato.html', {'form': form})
 
 
+@login_required
 def edit_contract(request, contract_id):
     contract = get_object_or_404(Contract, id=contract_id)
     if request.method == 'POST':
@@ -58,6 +62,7 @@ def edit_contract(request, contract_id):
     return render(request, 'contratos/edit_contrato.html', {'form': form})
 
 
+@login_required
 def delete_contract(request, contract_id):
     contract = get_object_or_404(Contract, id=contract_id)
     if request.method == 'POST':
